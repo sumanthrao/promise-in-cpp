@@ -6,9 +6,9 @@
 #include <exception>
 #include <condition_variable>
 
-/* 
+/*
  * Multiple producer, multiple consumer thread safe queue
- * Since 'return by reference' is used this queue won't throw 
+ * Since 'return by reference' is used this queue won't throw
  */
 template<typename T>
 class shared_queue {
@@ -42,14 +42,14 @@ class shared_queue {
         // Try to retrieve, if no items, wait till an item is available and try again
         void wait_and_pop( T& popped_item ) {
             std::unique_lock<std::mutex> lock( m_ ); // note: unique_lock is needed for std::condition_variable::wait
-            
+
             // The 'while' loop below is equal to
             // data_cond_.wait(lock, [](bool result){return !queue_.empty();});
-            DEBUG("RETRIEVING FROM THE QUEUE");
-            while( queue_.empty() ) { 
-            data_cond_.wait( lock );  
+            // DEBUG("RETRIEVING FROM THE QUEUE");
+            while( queue_.empty() ) {
+            data_cond_.wait( lock );
             }
-            DEBUG("RETRIEVED FROM QUEUE");
+            // DEBUG("RETRIEVED FROM QUEUE");
             popped_item=queue_.front(  );
             queue_.pop(  );
         }

@@ -20,12 +20,12 @@ class Scheduler {
 
         template<typename T>
         void enqueue( Task<T> *t ) {
-            mq_.push( [ t ](  ) mutable { DEBUG("lambda"); t->set_result( 500 ); } );
-        } 
+            mq_.push( [ t ](  ) mutable { t->set_result( t-> call(  ) ); } );
+        }
 
         void dispatch (  );
 
-        void doDone(  ); 
+        void doDone(  );
 
         ~Scheduler(  );
 };

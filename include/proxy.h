@@ -10,9 +10,9 @@ class Proxy {
         Scheduler scheduler;
 
     public:
-        Future<int>* task1(  ); 
+        Future<int>* task1(  );
 
-        Future<float>* task2(  );
+        Future<string>* task2(  );
 
         Future<char>* task3(  );
 };

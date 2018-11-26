@@ -5,23 +5,23 @@ Proxy::task1(  ) {
     // make a callback and push that to the queue and return the callback
     Future<int> *f = new Future<int>();
 
-    Task1 t( f );
-    
-    scheduler.enqueue<int>( &t );
+    Task1 *t = new Task1( f );
+
+    scheduler.enqueue<int>( t );
 
     return f;
 
 }
 
-Future<float>*
+Future<string>*
 Proxy::task2(  ) {
     // make a callback and push that to the queue and return the callback
 
-    Future<float> *f = new Future<float>();
+    Future<string> *f = new Future<string>();
 
-    Task2 t( f );
-    
-    scheduler.enqueue<float>( &t );    
+    Task2 *t = new Task2( f );
+
+    scheduler.enqueue<string>( t );
 
     return f;
 }
@@ -32,9 +32,9 @@ Proxy::task3(  ) {
 
     Future<char> *f = new Future<char>();
 
-    Task3 t( f );
-    
-    scheduler.enqueue<char>( &t );
+    Task3 *t = new Task3( f );
+
+    scheduler.enqueue<char>( t );
 
     return f;
 }

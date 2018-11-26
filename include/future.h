@@ -27,22 +27,22 @@ class Future {
                 // force scheduler to schedule method corresponding to this promise
                 // cout << "result not obtained yet!" << endl;
                 // exit(0);
-                return -1;
+                return T();
             }
-            
+
             // return res;
-        } 
+        }
 
         bool is_available(  ) {
             return done;
         }
 
         void set( T res ) {
-            std::cout << "Future set!\n";
+            // std::cout << "Future set!\n";
             //std::cout << res << "h"; // this is the culprit, i know but how? why?are you sure you van template the whle clas?
             // an instnace of future holds one task? yes, ok... what ok...help da...lets see..
-           // this->res = res;
-           //this->res = 500;
+            this->res = res;
+            //this->res = 500;
             done = true;
         }
 };

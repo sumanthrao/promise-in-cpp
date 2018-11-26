@@ -1,7 +1,7 @@
 #ifndef TASK_H
 #define TASK_H
 
-#include <iostream> 
+#include <iostream>
 
 #include "future.h"
 #include <typeinfo>
@@ -10,11 +10,11 @@ using namespace std;
 
 
 
-#define DEBUG(x) do { \ 
+#define DEBUG(x) do { \
 cerr << "DBG:"<< x << ": " << std::endl;\
 }	 while (0);
 
-template<typename T> 
+template<typename T>
 class Task {
 	private:
 		Future<T> *future_instance;
@@ -22,7 +22,7 @@ class Task {
 		Task( Future<T> *f ): future_instance( f ) {  };
 		virtual T call(  ) = 0;
 		void set_result( T res ) {
-			DEBUG("set_result: ");
+			// DEBUG("set_result: ");
 			// const std::type_info& ti1 = typeid(res);
 			// std::cout << typeid(res).name() << "\n";// it works only for strings da....
 			// cout << res << "\n";
@@ -36,19 +36,17 @@ class Task1: public Task<int> {
 		virtual int call(  );
 };
 
-class Task2: public Task<float> {
+class Task2: public Task<string> {
 	public:
-        Task2( Future<float> *f ): Task( f ) {  }; 
-		virtual float call(  );
+        Task2( Future<string> *f ): Task( f ) {  };
+		virtual string call(  );
 };
 
 
 class Task3: public Task<char>{
 	public:
-        Task3( Future<char> *f): Task( f ) {  };  
-		virtual char call(  );	
+        Task3( Future<char> *f): Task( f ) {  };
+		virtual char call(  );
 };
 
 #endif
-
-
