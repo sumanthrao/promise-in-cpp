@@ -1,7 +1,6 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
-#include "future.h"
 #include "task.h"
 #include "shared_queue.h"
 #include <thread>
