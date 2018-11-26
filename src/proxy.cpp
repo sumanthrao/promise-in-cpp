@@ -1,9 +1,9 @@
 #include "../include/proxy.h"
 
-Future<int>
+Future<int>*
 Proxy::task1(  ) {
     // make a callback and push that to the queue and return the callback
-    Future<int> f;
+    Future<int> *f = new Future<int>();
 
     Task1 t( f );
     
@@ -13,11 +13,11 @@ Proxy::task1(  ) {
 
 }
 
-Future<float>
+Future<float>*
 Proxy::task2(  ) {
     // make a callback and push that to the queue and return the callback
 
-    Future<float> f;
+    Future<float> *f = new Future<float>();
 
     Task2 t( f );
     
@@ -26,11 +26,11 @@ Proxy::task2(  ) {
     return f;
 }
 
-Future<char> 
+Future<char>*
 Proxy::task3(  ) {
     // make a callback and push that to the queue and return the callback
 
-    Future<char> f;
+    Future<char> *f = new Future<char>();
 
     Task3 t( f );
     
