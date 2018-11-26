@@ -7,10 +7,10 @@
 
 using namespace std;
 
-bool debug_enabled = true;
 
-#define DEBUG(x) do { if(debug_enabled){ \
-cerr << #x << ": " << std::endl;} \
+
+#define DEBUG(x) do { \ 
+cerr << #x << ": " << std::endl;\
 }	 while (0);
 
 template<typename T> 

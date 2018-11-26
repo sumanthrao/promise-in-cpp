@@ -1,6 +1,9 @@
 #ifndef FUTURE_H
 #define FUTURE_H
 
+#include <iostream>
+using namespace std;
+
 template<typename T>
 class Future {
     private:
@@ -16,6 +19,8 @@ class Future {
                 return res;
             } else {
                 // force scheduler to schedule method corresponding to this promise
+                cout << "result not obtained yet!" << endl;
+                exit(0);
             }
         } 
 
