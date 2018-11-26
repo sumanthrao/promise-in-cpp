@@ -16,7 +16,6 @@ class Scheduler {
         bool done_;
 
     public:
-
         Scheduler(  );
 
         template<typename T>
