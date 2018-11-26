@@ -45,10 +45,11 @@ class shared_queue {
             
             // The 'while' loop below is equal to
             // data_cond_.wait(lock, [](bool result){return !queue_.empty();});
-
+            DEBUG("RETRIEVING FROM THE QUEUE");
             while( queue_.empty() ) { 
             data_cond_.wait( lock );  
             }
+            DEBUG("RETRIEVED FROM QUEUE");
             popped_item=queue_.front(  );
             queue_.pop(  );
         }

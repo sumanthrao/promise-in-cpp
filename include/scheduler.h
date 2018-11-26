@@ -20,7 +20,7 @@ class Scheduler {
 
         template<typename T>
         void enqueue( Task<T> *t ) {
-            mq_.push( [ t ](  ) { t->set_result( t->call(  ) ); } );
+            mq_.push( [ t ](  ) mutable { DEBUG("lambda"); t->set_result( 500 ); } );
         } 
 
         void dispatch (  );

@@ -2,26 +2,35 @@
 #define FUTURE_H
 
 #include <iostream>
-using namespace std;
+#include <mutex>
+#include <atomic>
 
 template<typename T>
 class Future {
     private:
-        bool done;
+        std::atomic<bool> done;
         T res;
     public:
         Future(  ) {
             res = T();
+            // std::cout << "Future ctor" << std::endl;
+            done = false;
         }
 
         T resolve(  ) {
+            // std::cout << done << std::endl;
             if( done ) {
+                // std::cout << "if" << std::endl;
                 return res;
             } else {
+                // std::cout << "else" << std::endl;
                 // force scheduler to schedule method corresponding to this promise
-                cout << "result not obtained yet!" << endl;
-                exit(0);
+                // cout << "result not obtained yet!" << endl;
+                // exit(0);
+                return -1;
             }
+            
+            // return res;
         } 
 
         bool is_available(  ) {
@@ -29,7 +38,11 @@ class Future {
         }
 
         void set( T res ) {
-            this->res = res;
+            std::cout << "Future set!\n";
+            //std::cout << res << "h"; // this is the culprit, i know but how? why?are you sure you van template the whle clas?
+            // an instnace of future holds one task? yes, ok... what ok...help da...lets see..
+           // this->res = res;
+           //this->res = 500;
             done = true;
         }
 };
