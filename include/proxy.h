@@ -5,11 +5,22 @@
 #include "scheduler.h"
 #include "task.h"
 
+#define THREADS 3
+
 class Proxy {
     private:
-        Scheduler scheduler;
+        Scheduler *scheduler;
 
     public:
+
+        Proxy(  ) {
+            scheduler = new Scheduler(THREADS);
+        }
+
+        ~Proxy(  ) {
+            delete scheduler;
+        }
+
         Future<int>* task1(  );
 
         Future<string>* task2(  );

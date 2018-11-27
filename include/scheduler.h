@@ -3,6 +3,7 @@
 
 #include "task.h"
 #include "shared_queue.h"
+#include "../include/thread_pool.h"
 #include <thread>
 
 typedef std::function<void()> Callback;
@@ -14,9 +15,12 @@ class Scheduler {
         shared_queue<Callback> mq_;
         std::thread thd_;
         bool done_;
-
+        int num_threads;
+        ThreadPool *pool_;
+        Callback quit_token;
+        int end_;
     public:
-        Scheduler(  );
+        Scheduler( int num_threads );
 
         template<typename T>
         void enqueue( Task<T> *t ) {
