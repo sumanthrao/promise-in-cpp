@@ -11,7 +11,7 @@ using namespace std;
 
 
 #define DEBUG(x) do { \
-cerr << "DBG:"<< x << ": " << std::endl;\
+cerr << "DBG:"<< x << std::endl;\
 }	 while (0);
 
 template<typename T>

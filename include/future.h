@@ -23,10 +23,6 @@ class Future {
                 // std::cout << "if" << std::endl;
                 return res;
             } else {
-                // std::cout << "else" << std::endl;
-                // force scheduler to schedule method corresponding to this promise
-                // cout << "result not obtained yet!" << endl;
-                // exit(0);
                 return T();
             }
 
