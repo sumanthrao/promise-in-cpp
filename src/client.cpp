@@ -20,7 +20,6 @@ int main( int argc, char const *argv[] ) {
 
     Proxy handle;
 
-    
     Future<int> *f1 = handle.task1(  );
     Future<string> *f2 = handle.task2(  );
     Future<char> *f3 = handle.task3(  );

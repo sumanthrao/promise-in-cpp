@@ -34,6 +34,8 @@ class ThreadPool {
                             dequeued = m_pool->m_queue.dequeue( func );
                         }
                         if ( dequeued ) {
+                            // std::thread::id this_id = std::this_thread::get_id();
+                            // std::cout << "thread id is" << this_id << endl;
                             func(  );
                         }
                     }

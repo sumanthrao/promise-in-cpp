@@ -5,7 +5,7 @@
 #include "scheduler.h"
 #include "task.h"
 
-#define THREADS 3
+#define THREADS 2
 
 class Proxy {
     private:
