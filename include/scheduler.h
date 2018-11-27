@@ -18,7 +18,7 @@ class Scheduler {
         int num_threads;
         ThreadPool *pool_;
         Callback quit_token;
-        int end_;
+        //int end_;
     public:
         Scheduler( int num_threads );
 

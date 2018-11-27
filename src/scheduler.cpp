@@ -10,7 +10,7 @@ Scheduler::Scheduler( int num_threads ): num_threads( num_threads ) {
     pool_->init();
     quit_token = std::bind(&Scheduler::doDone, this);
     thd_ = std::thread(&Scheduler::dispatch, this);
-    end_ = -1;
+    //end_ = -1;
 }
 
 void
@@ -37,7 +37,7 @@ Scheduler::dispatch(  ) {
         }
         Callback func;
         (this->mq_).wait_and_pop(func);
-        func();
+        pool_->submit(func);
     }
 
 }
