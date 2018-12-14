@@ -2,6 +2,7 @@
 #include <unistd.h>
 
 Scheduler::Scheduler( int num_threads ): num_threads( num_threads ) {
+    cout << "Scheduler: \t\tStarted!" << std::endl;
     done_ = false;
     pool_ = new ThreadPool( num_threads );
     pool_ -> init();
@@ -23,6 +24,7 @@ Scheduler::dispatch(  ) {
         }
         Callback func;
         (this->mq_).wait_and_pop(func);
+        cout << "Scheduler: \t\tsubmits a task to the pool" << std::endl;
         pool_->submit(func);
     }
 
@@ -33,5 +35,6 @@ Scheduler::~Scheduler(  ) {
     mq_.push(quit_token); 
     thd_.join();
     pool_->shutdown();
+    cout << "Sheduler: \t\tShut down" << std::endl;
     // std::cout<<"thd joined"<<std::endl;
 } 

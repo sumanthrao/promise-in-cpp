@@ -35,8 +35,7 @@ class Future {
 
         void set( T res ) {
             // std::cout << "Future set!\n";
-            //std::cout << res << "h"; // this is the culprit, i know but how? why?are you sure you van template the whle clas?
-            // an instnace of future holds one task? yes, ok... what ok...help da...lets see..
+            //std::cout << res << "h"; 
             this->res = res;
             //this->res = 500;
             done = true;

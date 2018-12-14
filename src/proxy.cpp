@@ -16,7 +16,6 @@ Proxy::task1(  ) {
 Future<string>*
 Proxy::task2(  ) {
     // make a callback and push that to the queue and return the callback
-
     Future<string> *f = new Future<string>(  );
 
     Task2 *t = new Task2( f );
@@ -29,7 +28,6 @@ Proxy::task2(  ) {
 Future<char>*
 Proxy::task3(  ) {
     // make a callback and push that to the queue and return the callback
-
     Future<char> *f = new Future<char>(  );
 
     Task3 *t = new Task3( f );

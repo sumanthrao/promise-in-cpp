@@ -1,18 +1,18 @@
 #include "../include/task.h"
 #include <unistd.h>
-
+#include <thread>
 using namespace std::chrono;
 
 int
 Task1::call(  ) {
 	// start the task
 	auto start = high_resolution_clock::now();
-    DEBUG("Task-1  executing... \n");
+    DEBUG("Task-1 executing... \n");
 	sleep(2);
 	auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start); 
 	// end the task
-    cout << "Time taken by Task-1: "<< duration.count() << " milliseconds" << endl; 
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << "\n" << "Task 1: " << std::this_thread::get_id() << "\n" << "Time: " << duration.count() << " milliseconds" << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;  
 	return 1;
 }
 
@@ -26,7 +26,7 @@ Task2::call(  ) {
 	auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start); 
 	// end the task
-    cout << "Time taken by Task-2: "<< duration.count() << " milliseconds" << endl; 
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << "\n" << "Task 2: " << std::this_thread::get_id() << "\n" << "Time: " << duration.count() << " milliseconds" << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl; 
 	return "I rock!!";
 }
 
@@ -39,6 +39,7 @@ Task3::call(  ) {
 	auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start); 
 	// end the task
-    cout << "Time taken by Task-3: "<< duration.count() << " milliseconds" << endl; 
+
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << "\n" << "Task 3: " << std::this_thread::get_id() << "\n" << "Time: " << duration.count() << " milliseconds" << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl; 
 	return 'a';
 }
