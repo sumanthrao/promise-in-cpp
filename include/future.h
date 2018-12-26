@@ -4,12 +4,17 @@
 #include <iostream>
 #include <mutex>
 #include <atomic>
+#include <unistd.h>
+#include <thread>
+#include <condition_variable>
 
 template<typename T>
 class Future {
     private:
         std::atomic<bool> done;
         T res;
+        std::condition_variable my_cond;
+        std::mutex my_mutex;
     public:
         Future(  ) {
             res = T();
@@ -19,12 +24,14 @@ class Future {
 
         T resolve(  ) {
             // std::cout << done << std::endl;
-            if( done ) {
-                // std::cout << "if" << std::endl;
-                return res;
-            } else {
-                return T();
+            
+            while( !done ) {
+                std::unique_lock<std::mutex> lk(my_mutex);
+                my_cond.wait(lk);
+                //sleep(3);
             }
+            return res;
+        
 
             // return res;
         }
@@ -39,6 +46,10 @@ class Future {
             this->res = res;
             //this->res = 500;
             done = true;
+        }
+
+        void release(  ) {
+            my_cond.notify_one();
         }
 };
 

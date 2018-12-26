@@ -43,3 +43,9 @@ Task3::call(  ) {
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << "\n" << "Task 3: " << std::this_thread::get_id() << "\n" << "Time: " << duration.count() << " milliseconds" << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl; 
 	return 'a';
 }
+
+
+int
+Task4::call(  ) {
+	return func();
+}

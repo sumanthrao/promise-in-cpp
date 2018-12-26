@@ -1,5 +1,7 @@
 #include "../include/proxy.h"
 
+typedef std::function<int()> Function;
+
 Future<int>*
 Proxy::task1(  ) {
     // make a callback and push that to the queue and return the callback
@@ -35,4 +37,17 @@ Proxy::task3(  ) {
     scheduler->enqueue<char>( t );
 
     return f;
+}
+
+Future<int>*
+Proxy::task( Function func ) {
+    // make a callback and push that to the queue and return the callback
+    Future<int> *fut = new Future<int>(  );
+
+    Task4 *t = new Task4( fut, func );
+
+    scheduler->enqueue<int>( t );
+
+    return fut;
+
 }
